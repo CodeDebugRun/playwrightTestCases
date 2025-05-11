@@ -6,9 +6,45 @@ test.describe('Test Case 1: Register User', () => {
     // 1. Launch browser and navigate to url 'http://automationexercise.com'
     await page.goto('/'); // baseURL playwright.config.js'den geliyor
 
+        // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (DOĞRU YER) ---
+    try {
+      // Seçici: "<p class="fc-button-label">Consent</p>" içeren tıklanabilir element
+      // Örnek 1: Eğer p bir button içindeyse
+      const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
+      
+      // Örnek 2: Eğer p belirli bir class'a sahip bir div içindeyse
+      // const consentButtonLocator = page.locator('div.fc-button:has(p.fc-button-label:has-text("Consent"))');
+
+      // Örnek 3: XPath ile (daha esnek olabilir)
+      // const consentButtonLocator = page.locator('//p[@class="fc-button-label" and normalize-space(text())="Consent"]/ancestor::button[1]');
+      // Veya üstteki div için:
+      // const consentButtonLocator = page.locator('//p[@class="fc-button-label" and normalize-space(text())="Consent"]/ancestor::div[contains(@class, "fc-button")][1]');
+
+
+      // Butonun görünür olmasını bekle (timeout'u ihtiyaca göre ayarlayın)
+      // .first() kullanmak, seçicinin birden fazla elementle eşleşme ihtimaline karşı iyi bir pratiktir.
+      const consentElement = consentButtonLocator.first(); 
+
+      await consentElement.waitFor({ state: 'visible', timeout: 15000 }); // Timeout'u biraz artırdım
+
+      if (await consentElement.isVisible()) {
+        await consentElement.click();
+        console.log('Consent pop-up başarıyla tıklandı.');
+      } else {
+        // Bu log nadiren görülmeli eğer waitFor başarılıysa, ama bir güvenlik önlemi.
+        console.log('Consent butonu waitFor sonrası görünür değil veya bulunamadı.');
+      }
+    } catch (error) {
+      console.warn('Consent pop-up handle edilirken bir hata oluştu veya bulunamadı. Teste devam ediliyor...', error.message);
+      // Hata olsa bile teste devam etmesini isteyebiliriz, çünkü pop-up her zaman çıkmayabilir.
+      // Ya da burada testi fail ettirebilirsiniz: throw new Error('Consent pop-up handle edilemedi!');
+    }
+    // --- ÇEREZ ONAYI POP-UP'I SONU ---
+
     // 2. Verify that home page is visible successfully
     await expect(page).toHaveTitle(/Automation Exercise/);
     await expect(page.locator('img[alt="Website for automation practice"]')).toBeVisible();
+
 
     // 3. Click on 'Signup / Login' button
     await page.locator('a[href="/login"]').click();

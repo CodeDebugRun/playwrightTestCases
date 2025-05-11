@@ -19,6 +19,26 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
     const page = await context.newPage();
     
     await page.goto('https://automationexercise.com/login');
+      // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (beforeAll İÇİN) ---
+    try {
+      // Test Case 1'de kullandığınız ve çalışan seçiciyi buraya kopyalayın.
+      // Örneğin:
+      const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
+      // VEYA kullandığınız diğer doğru seçici
+
+      const consentElement = consentButtonLocator.first();
+      await consentElement.waitFor({ state: 'visible', timeout: 15000 }); // 15 saniye bekle
+
+      if (await consentElement.isVisible()) {
+        await consentElement.click();
+        console.log('Consent pop-up (beforeAll) başarıyla tıklandı.');
+      } else {
+        console.log('Consent butonu (beforeAll) waitFor sonrası görünür değil veya bulunamadı.');
+      }
+    } catch (error) {
+      console.warn('Consent pop-up (beforeAll) handle edilirken bir hata oluştu veya bulunamadı. Teste devam ediliyor...', error.message);
+    }
+    // --- ÇEREZ ONAYI POP-UP'I SONU ---
     await page.locator('input[data-qa="signup-name"]').fill(uniqueName);
     await page.locator('input[data-qa="signup-email"]').fill(uniqueEmail);
     await page.locator('button[data-qa="signup-button"]').click();
