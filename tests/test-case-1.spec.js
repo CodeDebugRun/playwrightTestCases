@@ -12,17 +12,6 @@ test.describe('Test Case 1: Register User', () => {
       // Örnek 1: Eğer p bir button içindeyse
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       
-      // Örnek 2: Eğer p belirli bir class'a sahip bir div içindeyse
-      // const consentButtonLocator = page.locator('div.fc-button:has(p.fc-button-label:has-text("Consent"))');
-
-      // Örnek 3: XPath ile (daha esnek olabilir)
-      // const consentButtonLocator = page.locator('//p[@class="fc-button-label" and normalize-space(text())="Consent"]/ancestor::button[1]');
-      // Veya üstteki div için:
-      // const consentButtonLocator = page.locator('//p[@class="fc-button-label" and normalize-space(text())="Consent"]/ancestor::div[contains(@class, "fc-button")][1]');
-
-
-      // Butonun görünür olmasını bekle (timeout'u ihtiyaca göre ayarlayın)
-      // .first() kullanmak, seçicinin birden fazla elementle eşleşme ihtimaline karşı iyi bir pratiktir.
       const consentElement = consentButtonLocator.first(); 
 
       await consentElement.waitFor({ state: 'visible', timeout: 15000 }); // Timeout'u biraz artırdım
@@ -102,19 +91,7 @@ test.describe('Test Case 1: Register User', () => {
     // 14. Click 'Continue' button
     await page.locator('a[data-qa="continue-button"]').click();
 
-    // Reklam çıkabilir, kapatmamız gerekebilir (opsiyonel, duruma göre)
-    // Eğer bir iframe içinde reklam varsa:
-    // const frameAd = page.frameLocator('iframe[id^="ad_iframe"]'); // id değişebilir, dikkatli seçin
-    // if (await frameAd.locator('#dismiss-button').isVisible({timeout: 2000}).catch(() => false)) {
-    //     await frameAd.locator('#dismiss-button').click();
-    // }
-    // Veya basitçe sayfada bir yere tıklayarak kapatmaya çalışabiliriz (riskli)
-    // try {
-    //     await page.locator('body').click({timeout: 1000, position: {x:0, y:0}}); // Reklamı kapatmak için
-    // } catch (e) { /* ignore */ }
-
-
-    // 15. Verify that 'Logged in as username' is visible
+     // 15. Verify that 'Logged in as username' is visible
     // Kullanıcı adı yeni oluşturulduğu için `uniqueName` ile eşleşmeli
     await expect(page.locator('li a i.fa-user + b')).toHaveText(uniqueName);
 

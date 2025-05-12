@@ -21,11 +21,8 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
     await page.goto('https://automationexercise.com/login');
       // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (beforeAll İÇİN) ---
     try {
-      // Test Case 1'de kullandığınız ve çalışan seçiciyi buraya kopyalayın.
-      // Örneğin:
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
-      // VEYA kullandığınız diğer doğru seçici
-
+      
       const consentElement = consentButtonLocator.first();
       await consentElement.waitFor({ state: 'visible', timeout: 15000 }); // 15 saniye bekle
 
@@ -63,11 +60,6 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
     await expect(page.locator('h2[data-qa="account-created"] b')).toHaveText('Account Created!');
     await page.locator('a[data-qa="continue-button"]').click();
 
-    // Reklam çıkabilir, kapatmaya çalışalım
-    // if (await page.locator('#dismiss-button', { timeout: 2000 }).isVisible().catch(() => false)) {
-    //     await page.locator('#dismiss-button').click();
-    // }
-    
     // Kullanıcıyı oluşturduktan sonra çıkış yapalım ki login testi temiz bir şekilde başlasın
     if (await page.locator('a[href="/logout"]').isVisible()) {
         await page.locator('a[href="/logout"]').click();
