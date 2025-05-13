@@ -2,10 +2,6 @@
 const { test, expect } = require('@playwright/test');
 
 // Bu test case için önceden kayıtlı bir kullanıcıya ihtiyacımız var.
-// Ya her seferinde yeni kullanıcı oluşturup onu kullanacağız (Test Case 1'deki gibi)
-// ya da manuel olarak bir kullanıcı oluşturup onun bilgilerini burada kullanacağız.
-// Şimdilik, Test Case 1'in mantığını kullanarak yeni bir kullanıcı oluşturalım ve onunla giriş yapalım.
-// Daha gelişmiş senaryolarda test verilerini ayrı bir yerden yönetebilirsiniz.
 
 test.describe('Test Case 2: Login User with correct email and password', () => {
   const uniqueName = `LoginUser${Date.now()}`;
@@ -101,6 +97,5 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
   });
 
   // Opsiyonel: Test sonrası kullanıcıyı silmek için afterAll hook'u eklenebilir
-  // Ancak bu, her test için ayrı bir kullanıcı oluşturma/silme mantığını karmaşıklaştırabilir.
-  // Şimdilik bu adımı atlıyoruz.
+  
 });
