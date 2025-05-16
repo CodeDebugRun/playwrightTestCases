@@ -52,7 +52,6 @@ test.describe('Test Case 3: Login User with incorrect email and password', () =>
 
     // 8. Verify error 'Your email or password is an incorrect!' is visible
     // Hata mesajının tam metni sitede değişebilir, o yüzden dikkatli seçin.
-    // Genellikle bu tür mesajlar <p style="color: red;"> içinde olur.
     const errorMessageLocator = page.locator('form[action="/login"] p[style="color: red;"]');
     // VEYA daha spesifik bir metinle:
     // const errorMessageLocator = page.locator('p:has-text("Your email or password is an incorrect!")');
