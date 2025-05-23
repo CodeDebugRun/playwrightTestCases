@@ -22,7 +22,7 @@ test.describe('Test Case 5: Register User with existing email', () => {
         console.log('Consent pop-up (TC5 beforeAll) başarıyla tıklandı.');
       }
     } catch (error) {
-      // Pop-up bulunamazsa veya hata olursa devam et
+      
       console.warn('Consent pop-up (TC5 beforeAll) handle edilirken bir hata oluştu veya bulunamadı...', error.message);
     }
     // --- ÇEREZ ONAYI POP-UP'I SONU ---
