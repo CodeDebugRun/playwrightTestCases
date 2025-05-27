@@ -8,7 +8,7 @@ test.describe('Test Case 6: Contact Us Form', () => {
     // 2. Navigate to url 'http://automationexercise.com'
     await page.goto('/');
 
-    // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (GEREKİRSE) ---
+    
     try {
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       const consentElement = consentButtonLocator.first();
