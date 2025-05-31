@@ -8,19 +8,19 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
   const uniqueEmail = `loginuser${Date.now()}@example.com`;
   const password = 'MySecurePassword123';
 
-  test.beforeAll(async ({ browser }) => {`, 90000);
+  test.beforeAll(async ({ browser }) => {
     // Bu testten önce bir kullanıcı oluşturalım ki onunla giriş yapabilelim.
     // Yeni bir browser context ve page kullanmak, ana testin state'ini etkilemez.
     const context = await browser.newContext();
     const page = await context.newPage();
-    
+
     await page.goto('https://automationexercise.com/login');
       // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (beforeAll İÇİN) ---
     try {
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
-      
+
       const consentElement = consentButtonLocator.first();
-      await consentElement.waitFor({ state: 'visible', timeout: 7000 }); // 15 saniye bekle
+      await consentElement.waitFor({ state: 'visible', timeout: 7000 }); // 7 saniye bekle
 
       if (await consentElement.isVisible()) {
         await consentElement.click();
@@ -52,7 +52,7 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
     await page.locator('#zipcode').fill('90001');
     await page.locator('#mobile_number').fill('5559876543');
     await page.locator('button[data-qa="create-account"]').click();
-    
+
     await expect(page.locator('h2[data-qa="account-created"] b')).toHaveText('Account Created!');
     await page.locator('a[data-qa="continue-button"]').click();
 
@@ -63,7 +63,7 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
     await page.close();
     await context.close();
     console.log(`Kullanıcı ${uniqueEmail} test için oluşturuldu ve çıkış yapıldı.`);
-  });
+  }, 90000); // Corrected position for timeout
 
   test('should login with correct credentials and then logout', async ({ page }) => {
     // 1. Launch browser and navigate to url 'http://automationexercise.com'
@@ -97,5 +97,5 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
   });
 
   // Opsiyonel: Test sonrası kullanıcıyı silmek için afterAll hook'u eklenebilir
-  
+
 });
