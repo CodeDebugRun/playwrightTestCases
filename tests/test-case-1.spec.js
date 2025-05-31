@@ -14,7 +14,7 @@ test.describe('Test Case 1: Register User', () => {
       
       const consentElement = consentButtonLocator.first(); 
 
-      await consentElement.waitFor({ state: 'visible', timeout: 15000 }); // Timeout'u biraz artırdım
+      await consentElement.waitFor({ state: 'visible', timeout: 7000 }); // Timeout'u biraz artırdım
 
       if (await consentElement.isVisible()) {
         await consentElement.click();
@@ -51,7 +51,7 @@ test.describe('Test Case 1: Register User', () => {
     await page.locator('button[data-qa="signup-button"]').click();
 
     // 7. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-    await expect(page.locator('div.login-form h2.title > b')).toHaveText('Enter Account Information');
+    await expect(page.locator('div.login-form h2.title > b:has-text("Enter Account Information")')).toHaveText('Enter Account Information');
 
     // 8. Fill details: Title, Name, Email, Password, Date of birth
     await page.locator('#id_gender1').check(); // Mr.

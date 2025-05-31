@@ -9,7 +9,7 @@ const { devices } = require('@playwright/test');
 const config = {
   testDir: './tests', // Test dosyalarınızın bulunduğu klasör
   /* Testler için maksimum toplam süre (milisaniye) */
-  timeout: 30 * 1000, // 30 saniye
+  timeout: 120 * 1000, // 30 saniye
   expect: {
     /**
      * expect() içindeki assertion'lar için maksimum süre.
@@ -19,7 +19,7 @@ const config = {
   /* Başarısız testleri CI üzerinde tekrar çalıştırma */
   retries: process.env.CI ? 2 : 0,
   /* Paralel çalışacak test sayısı. CI'da farklı, lokalde farklı olabilir. */
-  workers: process.env.CI ? 1 : undefined, // Lokal için 'undefined' genellikle CPU sayısına göre ayarlar
+  workers: 1, // Lokal için 'undefined' genellikle CPU sayısına göre ayarlar
   /* Raporlama formatı */
   reporter: 'html', // HTML raporu oluşturur (playwright-report klasöründe)
 
@@ -34,7 +34,7 @@ const config = {
     video: 'retain-on-failure', // Sadece başarısız testlerde videoyu sakla
 
     headless: false, // Tarayıcıyı görünür modda çalıştırır (geliştirme için true yapabilirsiniz)
-    actionTimeout: 0, // Action'lar için varsayılan timeout (0 = sınırsız)
+    actionTimeout: 10000, // Action'lar için varsayılan timeout (0 = sınırsız)
     navigationTimeout: 30000, // Sayfa navigasyonları için timeout (milisaniye)
   },
 

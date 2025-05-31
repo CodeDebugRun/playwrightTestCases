@@ -8,7 +8,7 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
   const uniqueEmail = `loginuser${Date.now()}@example.com`;
   const password = 'MySecurePassword123';
 
-  test.beforeAll(async ({ browser }) => {
+  test.beforeAll(async ({ browser }) => {`, 90000);
     // Bu testten önce bir kullanıcı oluşturalım ki onunla giriş yapabilelim.
     // Yeni bir browser context ve page kullanmak, ana testin state'ini etkilemez.
     const context = await browser.newContext();
@@ -20,7 +20,7 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       
       const consentElement = consentButtonLocator.first();
-      await consentElement.waitFor({ state: 'visible', timeout: 15000 }); // 15 saniye bekle
+      await consentElement.waitFor({ state: 'visible', timeout: 7000 }); // 15 saniye bekle
 
       if (await consentElement.isVisible()) {
         await consentElement.click();
