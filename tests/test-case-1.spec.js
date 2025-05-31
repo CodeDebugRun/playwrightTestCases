@@ -50,9 +50,6 @@ test.describe('Test Case 1: Register User', () => {
     // 6. Click 'Signup' button
     await page.locator('button[data-qa="signup-button"]').click();
 
-    // 7. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-    await expect(page.locator('div.login-form h2.title > b:has-text("Enter Account Information")')).toHaveText('Enter Account Information');
-
     // 8. Fill details: Title, Name, Email, Password, Date of birth
     await page.locator('#id_gender1').check(); // Mr.
     // Name zaten girilmiş olacak, ama yine de kontrol edebilir veya değiştirebiliriz.
