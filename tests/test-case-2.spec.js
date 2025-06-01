@@ -9,8 +9,8 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
   const password = 'MySecurePassword123';
 
   test.beforeAll(async ({ browser }) => {
-    // Bu testten önce bir kullanıcı oluşturalım ki onunla giriş yapabilelim.
-    // Yeni bir browser context ve page kullanmak, ana testin state'ini etkilemez.
+    // Bu testten önce bir kullanıcı oluşturalım ki onunla giriş yapabilelim
+    // Yeni bir browser context ve page kullanmak, ana testin state'ini etkilemez
     const context = await browser.newContext();
     const page = await context.newPage();
 
