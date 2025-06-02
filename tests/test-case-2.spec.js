@@ -31,7 +31,7 @@ test.describe('Test Case 2: Login User with correct email and password', () => {
     } catch (error) {
       console.warn('Consent pop-up (beforeAll) handle edilirken bir hata oluştu veya bulunamadı. Teste devam ediliyor...', error.message);
     }
-    // --- ÇEREZ ONAYI POP-UP'I SONU ---
+    // ÇEREZ ONAYI POP-UP'I SONU 
     await page.locator('input[data-qa="signup-name"]').fill(uniqueName);
     await page.locator('input[data-qa="signup-email"]').fill(uniqueEmail);
     await page.locator('button[data-qa="signup-button"]').click();
