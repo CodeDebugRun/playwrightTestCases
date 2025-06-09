@@ -7,7 +7,7 @@ test.describe('Test Case 8: Verify All Products and product detail page', () => 
     // 2. Navigate to url 'http://automationexercise.com'
     await page.goto('/');
 
-    // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (GEREKİRSE) ---
+    // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (GEREKİRSE) 
     try {
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       const consentElement = consentButtonLocator.first();
