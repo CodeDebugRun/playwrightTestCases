@@ -7,8 +7,8 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     // 2. Navigate to url 'http://automationexercise.com'
     await page.goto('/');
 
-    // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (GEREKİRSE) ---
-    // Diğer test caselerinde kullandığınız ve çalışan pop-up kapatma kodunu buraya ekleyin.
+    // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (GEREKİRSE) 
+    // Diğer test caselerinde kullandığınız ve çalışan pop-up kapatma kodunu buraya ekleyin
     try {
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       // VEYA sitenizdeki pop-up'a uygun diğer doğru seçici
