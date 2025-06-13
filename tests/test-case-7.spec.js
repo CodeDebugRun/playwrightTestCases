@@ -4,11 +4,11 @@ const { test, expect } = require('@playwright/test');
 test.describe('Test Case 7: Verify Test Cases Page', () => {
   test('should navigate to the test cases page successfully', async ({ page }) => {
     // 1. Launch browser and
-    // 2. Navigate to url 'http://automationexercise.com'
+    // 2. Navigate to url 'http://automationexercise.com'...
     await page.goto('/');
 
     // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (GEREKİRSE) 
-    // Diğer test caselerinde kullandığınız ve çalışan pop-up kapatma kodunu buraya ekleyin
+    // Diğer test caselerinde kullandığınız ve çalışan pop-up kapatma kodunu buraya ekleyin...
     try {
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       // VEYA sitenizdeki pop-up'a uygun diğer doğru seçici
