@@ -4,11 +4,11 @@ const { test, expect } = require('@playwright/test');
 test.describe('Test Case 1: Register User', () => {
   test('should register a new user successfully', async ({ page }) => {
     // 1. Launch browser and navigate to url 'http://automationexercise.com
-    await page.goto('/'); // baseURL playwright.config.js'den geliyor.
+    await page.goto('/'); // baseURL playwright.config.js'den geliyor
 
-        // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (DOĞRU YER) ---
+        // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (DOĞRU YER) 
     try {
-      // Seçici: "<p class="fc-button-label">Consent</p>" içeren tıklanabilir element.
+      // Seçici: "<p class="fc-button-label">Consent</p>" içeren tıklanabilir element
       // Örnek 1: Eğer p bir button içindeyse.
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       
