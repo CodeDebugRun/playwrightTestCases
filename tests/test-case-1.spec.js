@@ -14,7 +14,7 @@ test.describe('Test Case 1: Register User', () => {
       
       const consentElement = consentButtonLocator.first(); 
 
-      await consentElement.waitFor({ state: 'visible', timeout: 7000 }); // Timeout'u biraz artırdım
+      await consentElement.waitFor({ state: 'visible', timeout: 7000 }); // Timeout'u biraz artırdım///
 
       if (await consentElement.isVisible()) {
         await consentElement.click();
