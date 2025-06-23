@@ -20,7 +20,7 @@ test.describe('Test Case 1: Register User', () => {
         await consentElement.click();
         console.log('Consent pop-up başarıyla tıklandı.');
       } else {
-        // Bu log nadiren görülmeli eğer waitFor başarılıysa, ama bir güvenlik önlemi.
+        // Bu log nadiren görülmeli eğer waitFor başarılıysa, ama bir güvenlik önlemi
         console.log('Consent butonu waitFor sonrası görünür değil veya bulunamadı.');
       }
     } catch (error) {
@@ -28,7 +28,7 @@ test.describe('Test Case 1: Register User', () => {
       // Hata olsa bile teste devam etmesini isteyebiliriz, çünkü pop-up her zaman çıkmayabilir.
       // Ya da burada testi fail ettirebilirsiniz: throw new Error('Consent pop-up handle edilemedi!');
     }
-    // --- ÇEREZ ONAYI POP-UP'I SONU ---
+    
 
     // 2. Verify that home page is visible successfully
     await expect(page).toHaveTitle(/Automation Exercise/);
