@@ -18,7 +18,7 @@ test.describe('Test Case 9: Search Product', () => {
     } catch (error) {
       console.warn('Consent pop-up (TC9) handle edilirken bir hata oluştu veya bulunamadı...', error.message);
     }
-    // --- ÇEREZ ONAYI POP-UP'I SONU ---
+    // --- ÇEREZ ONAYI POP-UP'I SONU 
 
     // Reklamlar için ek kontrol (ana sayfada çıkabilir)
     try {
