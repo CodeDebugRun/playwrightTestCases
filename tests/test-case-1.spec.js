@@ -4,7 +4,7 @@ const { test, expect } = require('@playwright/test');
 test.describe('Test Case 1: Register User', () => {
   test('should register a new user successfully', async ({ page }) => {
     // 1. Launch browser and navigate to url 'http://automationexercise.com
-    await page.goto('/'); // baseURL playwright.config.js'den geliyor
+    await page.goto('/'); // baseURL playwright.config.js'den geliyor...
 
         // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (DOĞRU YER) 
     try {
@@ -14,7 +14,7 @@ test.describe('Test Case 1: Register User', () => {
       
       const consentElement = consentButtonLocator.first(); 
 
-      await consentElement.waitFor({ state: 'visible', timeout: 7000 }); // Timeout'u biraz artırdım///
+      await consentElement.waitFor({ state: 'visible', timeout: 5000 }); // Timeout'u biraz artırdım///
 
       if (await consentElement.isVisible()) {
         await consentElement.click();
