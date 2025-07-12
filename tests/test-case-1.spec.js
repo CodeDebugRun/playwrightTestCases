@@ -9,7 +9,7 @@ test.describe('Test Case 1: Register User', () => {
         // --- ÇEREZ ONAYI POP-UP'INI KAPATMA (DOĞRU YER) 
     try {
       // Seçici: "<p class="fc-button-label">Consent</p>" içeren tıklanabilir element
-      // Örnek 1: Eğer p bir button içindeyse.
+      // Örnek 1: Eğer p bir button içindeyse
       const consentButtonLocator = page.locator('button:has(p.fc-button-label:has-text("Consent"))');
       
       const consentElement = consentButtonLocator.first(); 
